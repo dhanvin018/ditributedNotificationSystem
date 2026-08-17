@@ -1,0 +1,6 @@
+rate-limiter:
+  global:
+    windows:
+      - size: 1m
+        limit: 500
+        strategy: FIXED_WINDOW

@@ -1,0 +1,47 @@
+rate-limiter:
+  global:
+    windows:
+      - size: 1m
+        limit: 10000
+        strategy: SLIDING_WINDOW_COUNTER
+  ip:
+    windows:
+      - size: 1m
+        limit: 60
+        strategy: FIXED_WINDOW
+  user:
+    tiers:
+      FREE:
+        windows:
+          - size: 1s
+            limit: 5
+            strategy: TOKEN_BUCKET
+            burstCapacity: 10
+          - size: 1m
+            limit: 100
+            strategy: SLIDING_WINDOW_COUNTER
+      INTERNAL:
+        windows:
+          - size: 1s
+            limit: 5
+            strategy: TOKEN_BUCKET
+            burstCapacity: 10
+          - size: 1m
+            limit: 100
+            strategy: SLIDING_WINDOW_COUNTER
+      STANDARD:
+        windows:
+          - size: 1s
+            limit: 25
+            strategy: TOKEN_BUCKET
+          - size: 1m
+            limit: 1000
+            strategy: SLIDING_WINDOW_COUNTER
+      PREMIUM:
+        windows:
+          - size: 1s
+            limit: 100
+            strategy: TOKEN_BUCKET
+          - size: 1m
+            limit: 10000
+            strategy: SLIDING_WINDOW_COUNTER

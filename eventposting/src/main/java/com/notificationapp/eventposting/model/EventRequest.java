@@ -1,4 +1,4 @@
-package com.notificationapp.eventposting;
+package com.notificationapp.eventposting.model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
